@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,4 +26,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    /**
+     * Получить роль данного пользователя.
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
+    
+    /**
+     * Получить сообщения для пользователя.
+     */
+    public function messages()
+    {
+        return $this->hasMany('App\Models\Message');
+    }
 }
