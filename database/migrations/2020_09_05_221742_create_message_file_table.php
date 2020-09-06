@@ -15,8 +15,8 @@ class CreateMessageFileTable extends Migration
     {
         Schema::create('message_file', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('message_id');
-            $table->integer('file_id');
+            $table->integer('message_id')->unsigned();
+            $table->integer('file_id')->unsigned();
             $table->timestamps();
             
             $table->foreign('message_id')->references('id')->on('messages');

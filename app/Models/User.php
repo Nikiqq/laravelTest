@@ -42,4 +42,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Message');
     }
+    
+    /**
+     * Получить тикеты для пользователя.
+     */
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket');
+    }
 }

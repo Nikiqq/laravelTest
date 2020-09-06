@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tickets extends Model
+class Ticket extends Model
 {
     /**
      * Получить сообщения для тикета.
@@ -12,5 +12,13 @@ class Tickets extends Model
     public function messages()
     {
         return $this->hasMany('App\Models\Message');
+    }
+    
+    /**
+    * Получить пользователя данного тикета.
+    */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Messages extends Model
+class Message extends Model
 {
     /**
     * Файлы, принадлежащие сообщению.
@@ -20,7 +20,7 @@ class Messages extends Model
     */
     public function user()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
     
     /**
@@ -28,6 +28,6 @@ class Messages extends Model
     */    
     public function ticket()
     {
-        return $this->belongsToMany('App\Models\Ticket');
+        return $this->belongsTo('App\Models\Ticket');
     }
 }
