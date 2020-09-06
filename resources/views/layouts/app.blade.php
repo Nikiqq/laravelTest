@@ -23,7 +23,9 @@
                         <h5 class="my-0 mr-md-auto font-weight-normal">Система тикетов</h5>
                         <nav class="my-2 my-md-0 mr-md-3">
                             <a class="p-2 text-white" href="{{env('APP_URL')}}">Главная</a>
-                            <a class="p-2 text-white" href="{{env('APP_URL')}}/create">Добавить тикет</a>
+                            @role(['administrator', 'moderator'])
+                                <a class="p-2 text-white" href="{{env('APP_URL')}}/create">Добавить тикет</a>
+                            @endrole
                         </nav>
                     </ul>
 

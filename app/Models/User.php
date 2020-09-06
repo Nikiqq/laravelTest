@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Traits\HasRolesAndPermissions;
+use App\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRolesAndPermissions;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -27,15 +27,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    /**
-     * Получить роль данного пользователя.
-     */
-    public function role()
-    {
-        return $this->belongsTo('App\Models\Role');
-    }
-    
+        
     /**
      * Получить сообщения для пользователя.
      */
@@ -50,5 +42,10 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany('App\Models\Ticket');
+    }
+    
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
     }
 }

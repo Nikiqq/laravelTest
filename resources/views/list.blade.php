@@ -16,21 +16,21 @@
             <p>Автор: {{$ticket->user->name}}</p>
             <a href="{{env('APP_URL')}}/ticket/{{$ticket->id}}">Детальный просмотр</a>
             
-            <!-- если админ:            -->
+            @role(['administrator'])
+                <form method="post" action="{{env('APP_URL')}}/ticket/{{$ticket->id}}/update">
+                    <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                    <select name="status" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    @foreach($statuses as $status)
+                        <option value="{{$status->id}}" 
+                            <?php if($status->id === $ticket->status->id) echo 'selected' ?>>
+                            {{$status->name}}
+                        </option>
+                    @endforeach
+                    </select>
 
-            <form method="post" action="{{env('APP_URL')}}/ticket/{{$ticket->id}}/update">
-                <input name="_token" type="hidden" value="{{ csrf_token() }}">
-                <select name="status" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                @foreach($statuses as $status)
-                    <option value="{{$status->id}}" 
-                        <?php if($status->id === $ticket->status->id) echo 'selected' ?>>
-                        {{$status->name}}
-                    </option>
-                @endforeach
-                </select>
-
-                <button type="submit" class="btn btn-success">Обновить статус</button>
-            </form>
+                    <button type="submit" class="btn btn-success">Обновить статус</button>
+                </form>
+            @endrole
         </div>
         
     @endforeach

@@ -15,11 +15,13 @@
                 {{$message->body}}
             </p>
             <p>Автор: {{$message->user->name}}</p>
-            @foreach($message->files as $file)
-                <p>
-                    <a href="{{env('STORAGE_URL')}}/upload/{{$file->name}}" target="_blank">{{$file->name}}</a>
-                </p>
-            @endforeach
+            @role(['administrator', 'moderator'])                            
+                @foreach($message->files as $file)
+                    <p>
+                        <a href="{{env('STORAGE_URL')}}/upload/{{$file->name}}" target="_blank">{{$file->name}}</a>
+                    </p>
+                @endforeach
+            @endrole
         </div>
     @endforeach
     
