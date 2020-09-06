@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
     Тикет номер {{$ticket->id}}
 @endsection
 
-@section('main_content')
+@section('content')
     <main role="main">
         <h1>Тикет №{{$ticket->id}}: {{$ticket->title}}</h1>
     </main>

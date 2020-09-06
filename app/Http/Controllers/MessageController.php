@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\File;
 use App\Http\Requests\AddMessageRequest;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -14,7 +15,7 @@ class MessageController extends Controller
     {
         $message = new Message([
             'body' => $request->body,
-            'user_id' => 1 //пока нет user
+            'user_id' => Auth::user()->id
         ]);
         
         $ticket = Ticket::find($id);

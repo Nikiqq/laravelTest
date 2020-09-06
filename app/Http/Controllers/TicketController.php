@@ -8,6 +8,7 @@ use App\Models\Status;
 use App\Models\Message;
 use App\Models\File;
 use App\Http\Requests\AddTicketRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class TicketController extends Controller
@@ -62,7 +63,7 @@ class TicketController extends Controller
         
         $ticket = new Ticket([
             'title' => $request->title,
-            'user_id' => 1, //пока нет user
+            'user_id' => Auth::user()->id,
             'status_id' => $status->id ?? 1 
         ]);
         

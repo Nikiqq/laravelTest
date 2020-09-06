@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
     Создать новый тикет
 @endsection
 
-@section('main_content')
+@section('content')
     <main role="main">
         <h1>Форма создания нового тикета</h1>
     </main>

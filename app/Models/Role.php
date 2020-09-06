@@ -4,14 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Roles extends Model
+class Role extends Model
 {
-  /**
-   * Получить пользователей для роли.
-   */
-  public function users()
-  {
-    return $this->hasMany('App\Models\User');
-  }
-    
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Models\Perission','roles_permissions');
+    }
 }

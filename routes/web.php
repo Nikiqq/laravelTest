@@ -22,3 +22,7 @@ Route::post('/create', 'TicketController@create');
 
 
 Route::post('/ticket/{id}/add-message', 'MessageController@addMessage')->where('id', '[0-9]+');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

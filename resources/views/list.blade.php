@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title')
     Список тикетов
 @endsection
 
-@section('main_content')
+@section('content')
     <main role="main">
         <h1>Список тикетов</h1>
     </main>
