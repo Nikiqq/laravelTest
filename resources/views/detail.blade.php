@@ -25,7 +25,7 @@
     
     <h3>Добавить сообщение</h3>
     
-    <form method="post" action="{{env('APP_URL')}}/ticket/{{$ticket->id}}/add" enctype="multipart/form-data">
+    <form method="post" action="{{env('APP_URL')}}/ticket/{{$ticket->id}}/add-message" enctype="multipart/form-data">
         <input name="_token" type="hidden" value="{{ csrf_token() }}">
         <textarea name="body" id="body" class="form-control" placeholder="Введите сообщение"></textarea><br>
         <input type="file" multiple name="file[]">

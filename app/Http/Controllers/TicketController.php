@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\Status;
 use App\Models\Message;
 use App\Models\File;
 
@@ -12,13 +13,16 @@ class TicketController extends Controller
 {
     public function getList()
     {
-        $tickets = new Ticket();
+        $ticket = new Ticket();
+        $status = new Status();
+        
         return view('list', 
                     [
-                        'items' => $tickets
-                            ->with('user')
+                        'tickets' => $ticket
+                            ->with('user', 'status')
                             ->orderBy('created_at', 'asc')
-                            ->get()
+                            ->get(),
+                        'statuses' => $status->all()
                     ]);
     }
     
@@ -36,6 +40,17 @@ class TicketController extends Controller
                             ->orderBy('created_at', 'asc')  
                             ->get()
                     ]);
+    }
+    
+    public function updateStatusTicket(Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        
+        $ticket->status_id = $request->status;
+        $ticket->save();
+        
+        return redirect()->route('list');
+        
     }
     
 }

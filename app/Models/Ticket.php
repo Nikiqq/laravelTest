@@ -21,4 +21,12 @@ class Ticket extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+    
+    /**
+    * Получить статус данного тикета.
+    */
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status');
+    }
 }
