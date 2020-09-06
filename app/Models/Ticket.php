@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
+    protected $fillable = ['title', 'user_id', 'status_id'];
+    
     /**
      * Получить сообщения для тикета.
      */

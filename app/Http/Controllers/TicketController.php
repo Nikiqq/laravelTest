@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\Status;
 use App\Models\Message;
 use App\Models\File;
+use App\Http\Requests\AddTicketRequest;
 
 
 class TicketController extends Controller
@@ -42,7 +43,7 @@ class TicketController extends Controller
                     ]);
     }
     
-    public function updateStatusTicket(Request $request, $id)
+    public function updateStatus(Request $request, $id)
     {
         $ticket = Ticket::find($id);
         
@@ -51,6 +52,23 @@ class TicketController extends Controller
         
         return redirect()->route('list');
         
+    }
+    
+    public function create(AddTicketRequest $request)
+    {
+        $defaultStatus = 'Анализ/оцssенка';
+        $status = new Status();
+        $status = $status->select('id')->where('name', $defaultStatus)->first();
+        
+        $ticket = new Ticket([
+            'title' => $request->title,
+            'user_id' => 1, //пока нет user
+            'status_id' => $status->id ?? 1 
+        ]);
+        
+        $ticket->save();
+        
+        return redirect()->route('list');
     }
     
 }
