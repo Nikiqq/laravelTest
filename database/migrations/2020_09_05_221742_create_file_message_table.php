@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessageFileTable extends Migration
+class CreateFileMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMessageFileTable extends Migration
      */
     public function up()
     {
-        Schema::create('message_file', function (Blueprint $table) {
+        Schema::create('file_message', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('message_id')->unsigned();
             $table->integer('file_id')->unsigned();
@@ -31,6 +31,6 @@ class CreateMessageFileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_file');
+        Schema::dropIfExists('file_message');
     }
 }

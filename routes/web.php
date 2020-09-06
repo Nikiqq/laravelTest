@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'TicketController@getList');
+
+Route::get('/ticket/{id}', 'TicketController@getDetail')->where('id', '[0-9]+');
