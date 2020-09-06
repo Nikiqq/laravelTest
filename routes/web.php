@@ -14,4 +14,4 @@
 Route::get('/', 'TicketController@getList');
 
 Route::name('detail')->get('/ticket/{id}', 'TicketController@getDetail')->where('id', '[0-9]+');
-Route::post('/ticket/{id}/add', 'TicketController@addMessage')->where('id', '[0-9]+');
+Route::post('/ticket/{id}/add', 'MessageController@addMessage')->where('id', '[0-9]+');
