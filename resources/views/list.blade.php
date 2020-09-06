@@ -14,7 +14,7 @@
             <h3>{{$item->title}}</h3>
             <p>Статус: {{$item->status}}</p>
             <p>Автор: {{$item->user->name}}</p>
-            <a href="ticket/{{$item->id}}">Детальный просмотр</a>
+            <a href="{{env('APP_URL')}}/ticket/{{$item->id}}">Детальный просмотр</a>
         </div>
     @endforeach
 

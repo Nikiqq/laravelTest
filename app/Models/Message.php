@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    protected $fillable = ['body', 'user_id', 'ticket_id'];
+    
     /**
     * Файлы, принадлежащие сообщению.
     */
